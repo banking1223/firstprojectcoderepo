@@ -1,0 +1,24 @@
+ami-0189d76e
+
+#!/usr/bin/env python
+import boto3 
+ec2 = boto3.resource('ec2')
+instance = ec2.create_instances(
+	ImageId='ami-b46f48db',
+	MinCount=1,
+	MaxCount=1, 
+	InstanceType='t2.micro')
+print instance[0].id
+
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "PublicReadGetObject",
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": "s3:GetObject",
+            "Resource": "arn:aws:s3:::pallavistatic/*"
+        }
+    ]
+}
